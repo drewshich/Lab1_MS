@@ -1,0 +1,108 @@
+{
+  "title": "Модель доверия",
+  "players": [
+    {
+      "id": "P1",
+      "name": "Игрок 1"
+    },
+    {
+      "id": "P2",
+      "name": "Игрок 2"
+    },
+    {
+      "id": "P3",
+      "name": "Игрок 3"
+    }
+  ],
+  "root": "T0",
+  "nodes": [
+    {
+      "id": "T0",
+      "kind": "decision",
+      "label": "Старт доверия",
+      "player": "P1",
+      "edges": [
+        {
+          "action": "O: безопасный выбор",
+          "to": "T_safe_1"
+        },
+        {
+          "action": "Передать ход Игроку 2",
+          "to": "T1"
+        }
+      ]
+    },
+    {
+      "id": "T1",
+      "kind": "decision",
+      "label": "Оценка доверия",
+      "player": "P2",
+      "edges": [
+        {
+          "action": "O: безопасный выбор",
+          "to": "T_safe_2"
+        },
+        {
+          "action": "Передать ход Игроку 3",
+          "to": "T2"
+        }
+      ]
+    },
+    {
+      "id": "T2",
+      "kind": "decision",
+      "label": "Выбор Игрока 3",
+      "player": "P3",
+      "edges": [
+        {
+          "action": "Парето-оптимальный исход",
+          "to": "T_pareto"
+        },
+        {
+          "action": "Случайный/эгоистичный исход",
+          "to": "T_selfish"
+        }
+      ]
+    },
+    {
+      "id": "T_safe_1",
+      "kind": "terminal",
+      "label": "Безопасный исход Игрока 1",
+      "payoff": [
+        2,
+        2,
+        0
+      ]
+    },
+    {
+      "id": "T_safe_2",
+      "kind": "terminal",
+      "label": "Безопасный исход Игрока 2",
+      "payoff": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "id": "T_pareto",
+      "kind": "terminal",
+      "label": "Парето-оптимальный исход",
+      "payoff": [
+        4,
+        4,
+        3
+      ]
+    },
+    {
+      "id": "T_selfish",
+      "kind": "terminal",
+      "label": "Эгоистичный выбор Игрока 3",
+      "payoff": [
+        1,
+        1,
+        5
+      ]
+    }
+  ]
+}

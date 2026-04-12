@@ -1,0 +1,125 @@
+{
+  "title": "Игра многоножки",
+  "players": [
+    {
+      "id": "P1",
+      "name": "Игрок 1"
+    },
+    {
+      "id": "P2",
+      "name": "Игрок 2"
+    }
+  ],
+  "root": "C1",
+  "nodes": [
+    {
+      "id": "C1",
+      "kind": "decision",
+      "label": "Ход 1",
+      "player": "P1",
+      "edges": [
+        {
+          "action": "Stop",
+          "to": "T_stop_1"
+        },
+        {
+          "action": "Continue",
+          "to": "C2"
+        }
+      ]
+    },
+    {
+      "id": "T_stop_1",
+      "kind": "terminal",
+      "label": "Остановка на шаге 1",
+      "payoff": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": "C2",
+      "kind": "decision",
+      "label": "Ход 2",
+      "player": "P2",
+      "edges": [
+        {
+          "action": "Stop",
+          "to": "T_stop_2"
+        },
+        {
+          "action": "Continue",
+          "to": "C3"
+        }
+      ]
+    },
+    {
+      "id": "T_stop_2",
+      "kind": "terminal",
+      "label": "Остановка на шаге 2",
+      "payoff": [
+        2.0,
+        3.0
+      ]
+    },
+    {
+      "id": "C3",
+      "kind": "decision",
+      "label": "Ход 3",
+      "player": "P1",
+      "edges": [
+        {
+          "action": "Stop",
+          "to": "T_stop_3"
+        },
+        {
+          "action": "Continue",
+          "to": "C4"
+        }
+      ]
+    },
+    {
+      "id": "T_stop_3",
+      "kind": "terminal",
+      "label": "Остановка на шаге 3",
+      "payoff": [
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "id": "C4",
+      "kind": "decision",
+      "label": "Ход 4",
+      "player": "P2",
+      "edges": [
+        {
+          "action": "Stop",
+          "to": "T_stop_4"
+        },
+        {
+          "action": "Continue",
+          "to": "T_continue_end"
+        }
+      ]
+    },
+    {
+      "id": "T_stop_4",
+      "kind": "terminal",
+      "label": "Остановка на шаге 4",
+      "payoff": [
+        -1.0,
+        2.0
+      ]
+    },
+    {
+      "id": "T_continue_end",
+      "kind": "terminal",
+      "label": "Все продолжают до конца",
+      "payoff": [
+        -1.0,
+        1.0
+      ]
+    }
+  ]
+}
